@@ -1,4 +1,7 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,jsonify
+import json
+
+
 
 obj=Flask(__name__)
 
@@ -13,15 +16,15 @@ def math_operation():
     num2=request.json["num2"]
     
     if oper=="add":
-        result=num1+num2
+        result=int(num1)+int(num2)
     elif oper=="multi":
-        result=num1*num2
+        result=int(num1)*int(num2)
     elif oper=="div":
-        result=num1//num2
+        result=int(num1)//int(num2)
     else:
-        result=num1-num2
+        result=int(num1)-int(num2)
 
-    return result
+    return "the operation is {} the result is {}".format(oper,result)
 
 
 def welcome():
